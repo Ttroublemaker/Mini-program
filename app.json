@@ -1,0 +1,15 @@
+{
+  "pages": [
+    "pages/classic/classic"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#ddd",
+    "navigationBarTitleText": "大笨钟-demo",
+    "navigationBarTextStyle": "black",
+    "navigationStyle": "default",
+    "backgroundColor": "#ffffff",
+    "enablePullDownRefresh": false
+  },
+  "sitemapLocation": "sitemap.json"
+}
