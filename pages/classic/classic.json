@@ -1,3 +1,5 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "z-like":"/components/like/index"
+  }
 }

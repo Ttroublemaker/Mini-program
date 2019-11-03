@@ -1,0 +1,6 @@
+<!-- 不阻止冒泡 -->
+<view bind:tap="onLike" class="container">
+<!-- <view catch:tap="onLike" class="container"> -->
+  <image src="{{like?yesSrc:noSrc}}"></image>
+  <text>{{count}}</text>
+</view>

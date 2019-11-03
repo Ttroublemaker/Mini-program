@@ -1,0 +1,20 @@
+.container {
+  /* inline-flex：将对象作为内联块级弹性伸缩盒显示***/
+  display: inline-flex;
+  flex: row;
+  padding: 10rpx;
+}
+
+.container image {
+  width: 32rpx;
+  height: 28rpx;
+}
+
+.container text {
+  font-size: 24rpx;
+  line-height: 24rpx;
+  color: #bbb;
+  position: relative;
+  bottom: 10rpx;
+  left: 6rpx;
+}

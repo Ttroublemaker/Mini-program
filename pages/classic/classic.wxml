@@ -1,2 +1,1 @@
-<!--pages/classic/classic.wxml-->
-<text>pages/classic/classic.wxml</text>
+<z-like like="{{classic.like_status}}" count="{{classic.fav.nums}}"/>

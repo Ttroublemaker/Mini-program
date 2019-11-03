@@ -1,0 +1,6 @@
+/* page页面级样式设置 */
+
+page {
+  font-family: "PingFangSC-Thin";
+  font-size: 32rpx;
+}
