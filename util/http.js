@@ -17,12 +17,14 @@ class HTTP {
       data: params.data,
       header: {
         'content-type': 'application/json',
-        'appKey': config.appKey
+        'appkey': config.appkey
       },
       success: (res) => {
         let code = res.statusCode.toString() //注意转换成字符串
         if (code.startsWith('2')) {
-          params.success(res.data)
+          // console.log('res',res)
+          // 成功的回调函数success
+          params.success && params.success(res.data)
         } else {
           let error_code = res.data.error_code
           console.log(error_code)

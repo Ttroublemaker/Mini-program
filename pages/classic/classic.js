@@ -1,26 +1,36 @@
 // import HTTP from '../../util/http.js'
 import ClassicModel from '../../models/classic.js'
+import LikeModel from '../../models/like.js'
 
 // 实例化
-let classic = new ClassicModel()
+let classicModel = new ClassicModel()
+let likeModel = new LikeModel()
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    classic: null
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    classic.getLatest((res)=>{
-       this.setData({
-         classic:res
-       })
+    classicModel.getLatest((res) => {
+      this.setData({
+        classic: res.data
+      })
+      // console.log(this.data.classic)
     })
+  },
+
+  onLike: function(event) {
+    let behavior = event.detail.behavior//获取当前的点赞状态
+    console.log(behavior)
+    likeModel.like(behavior,this.data.classic.id,this.data.classic.type)
   },
 
   /**
@@ -69,6 +79,6 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function() {
-    
+
   }
 })

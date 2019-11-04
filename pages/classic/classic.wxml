@@ -1,1 +1,2 @@
-<z-like like="{{classic.like_status}}" count="{{classic.fav.nums}}"/>
+<z-like bind:like="onLike" like="{{classic.like_status}}" count="{{classic.fav_nums}}"/>
+<z-movie img="{{classic.image}}" content="{{classic.content}}"/>
