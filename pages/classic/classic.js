@@ -12,7 +12,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    classic: null
+    classic: null,
+    latest: true,
+    first: false
   },
 
   /**
@@ -28,11 +30,16 @@ Page({
   },
 
   onLike: function(event) {
-    let behavior = event.detail.behavior//获取当前的点赞状态
+    let behavior = event.detail.behavior //获取当前的点赞状态
     console.log(behavior)
-    likeModel.like(behavior,this.data.classic.id,this.data.classic.type)
+    likeModel.like(behavior, this.data.classic.id, this.data.classic.type)
   },
+  onNext: function(event) {
 
+  },
+  onPrevious: function(event) {
+
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
