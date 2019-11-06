@@ -1,4 +1,3 @@
-// import HTTP from '../../util/http.js'
 import ClassicModel from '../../models/classic.js'
 import LikeModel from '../../models/like.js'
 
@@ -21,6 +20,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    // 获取最新一期期刊
     classicModel.getLatest((res) => {
       this.setData({
         classic: res.data
@@ -34,12 +34,25 @@ Page({
     console.log(behavior)
     likeModel.like(behavior, this.data.classic.id, this.data.classic.type)
   },
+
   onNext: function(event) {
-
+    this._updateClassic('next')
   },
-  onPrevious: function(event) {
-
+  onPrevious: function (event) {
+    this._updateClassic('previous')
   },
+  // 抽离的私有方法
+  _updateClassic: function(nextOrPrevious) {
+    let index = this.data.classic.index
+    classicModel.getClassic(index, nextOrPrevious, (res) => {
+      this.setData({
+        classic: res.data,
+        latest: classicModel.isLatest(res.data.index),
+        first: classicModel.isFirst(res.data.index)
+      })
+    })
+  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

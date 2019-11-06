@@ -1,0 +1,6 @@
+<view>
+  <image src="{{img}}" />
+  <image src="{{pause.Src}}" />
+  <image src="images/music@tag.png" />
+  <text></text>
+</view>
