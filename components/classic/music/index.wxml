@@ -1,6 +1,6 @@
-<view>
-  <image src="{{img}}" />
-  <image src="{{pause.Src}}" />
-  <image src="images/music@tag.png" />
-  <text></text>
+<view hidden="{{hidden}}" class="classic-container">
+  <image src="{{img}}" class="classic-img" />
+  <!-- <image src="{{pause.Src}}" class="pause"/> -->
+  <image src="images/music@tag.png" class="tag"/>
+  <text class="content">{{content}}</text>
 </view>

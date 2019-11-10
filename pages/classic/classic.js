@@ -13,7 +13,10 @@ Page({
   data: {
     classic: null,
     latest: true,
-    first: false
+    first: false,
+    // likeCount和likeStatus需要动态更新，不能缓存，所以提取出来
+    likeCount: 0,
+    likeStatus: false
   },
 
   /**
@@ -22,10 +25,12 @@ Page({
   onLoad: function(options) {
     // 获取最新一期期刊
     classicModel.getLatest((res) => {
+      // this._getLikeStatus(res.data.id,res.data.type)
       this.setData({
-        classic: res.data
+        classic: res.data,
+        likeCount: res.data.fav_nums,
+        likeStatus: res.data.like_status
       })
-      // console.log(this.data.classic)
     })
   },
 
@@ -38,13 +43,14 @@ Page({
   onNext: function(event) {
     this._updateClassic('next')
   },
-  onPrevious: function (event) {
+  onPrevious: function(event) {
     this._updateClassic('previous')
   },
   // 抽离的私有方法
   _updateClassic: function(nextOrPrevious) {
     let index = this.data.classic.index
     classicModel.getClassic(index, nextOrPrevious, (res) => {
+      this._getLikeStatus(res.data.id, res.data.type)
       this.setData({
         classic: res.data,
         latest: classicModel.isLatest(res.data.index),
@@ -52,7 +58,16 @@ Page({
       })
     })
   },
-
+  // 获取动态更新的点赞状态和数量
+  _getLikeStatus: function(artID, category) {
+    likeModel.getClassicLikeStatus(artID, category, (res) => {
+      console.log(res)
+      this.setData({
+        likeCount: res.data.fav_nums,
+        likeStatus: res.data.like_status
+      })
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
