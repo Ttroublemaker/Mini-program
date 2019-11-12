@@ -1,10 +1,30 @@
 <view class="container">
-  <view class="header">
-    <z-epsoide class="epsoide" index="{{classic.index}}" />
-    <z-like class="like" bind:like="onLike" like="{{likeStatus}}" count="{{likeCount}}" />
-  </view>
-  <z-movie hidden="{{classic.type!==100}}" img="{{classic.image}}" content="{{classic.content}}" />
-  <z-music hidden="{{classic.type!==200}}" img="{{classic.image}}" content="{{classic.content}}"/>
-  <z-essay hidden="{{classic.type!==300}}" img="{{classic.image}}" content="{{classic.content}}" />
-  <z-navi bind:left="onNext" bind:right="onPrevious" class="navi" title="{{classic.title}}" first="{{first}}" latest="{{latest}}" />
+	<view class="header">
+		<z-episode class="epsoide" index="{{classic.index}}" />
+		<z-like
+		 class="like"
+		 bind:like="onLike"
+		 like="{{likeStatus}}"
+		 count="{{likeCount}}"
+		/>
+	</view>
+	<z-movie hidden="{{classic.type!==100}}" img="{{classic.image}}" content="{{classic.content}}" />
+	<!-- 需要使用attached，所以只能用wx:if -->
+	<z-music
+	 wx:if="{{classic.type==200}}"
+	 img="{{classic.image}}"
+	 content="{{classic.content}}"
+	 src="{{classic.url}}"
+	 title="{{classic.title}}"
+	/>
+	<z-essay hidden="{{classic.type!==300}}" img="{{classic.image}}" content="{{classic.content}}" />
+	<z-navi
+	 bind:left="onNext"
+	 bind:right="onPrevious"
+	 class="navi"
+	 title="{{classic.title}}"
+	 first="{{first}}"
+	 latest="{{latest}}"
+	/>
 </view>
+

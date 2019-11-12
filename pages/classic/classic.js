@@ -36,7 +36,7 @@ Page({
 
   onLike: function(event) {
     let behavior = event.detail.behavior //获取当前的点赞状态
-    console.log(behavior)
+    // console.log(behavior)
     likeModel.like(behavior, this.data.classic.id, this.data.classic.type)
   },
 
