@@ -36,15 +36,17 @@ class HTTP {
     })
   }
   // 定义内部使用的私有方法
-  _show_error(error_code) {
-    if (!error_code) {
-      error_code = 1
-    }
-    wx.showToast({
-      title: tips[error_code],
-      icon: 'none',
-      duration: 2000
-    })
-  }
+	_show_error(error_code) {
+		if (!error_code) {
+			error_code = 1
+		}
+		const tip = tips[error_code]
+
+		wx.showToast({
+			title: tip ? tips[error_code] : 1,
+			icon: 'none',
+			duration: 2000
+		})
+	}
 }
 export default HTTP
