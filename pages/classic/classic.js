@@ -61,7 +61,7 @@ Page({
   // 获取动态更新的点赞状态和数量
   _getLikeStatus: function(artID, category) {
     likeModel.getClassicLikeStatus(artID, category, (res) => {
-      console.log(res)
+      // console.log(res)
       this.setData({
         likeCount: res.data.fav_nums,
         likeStatus: res.data.like_status

@@ -16,7 +16,14 @@ Component({
     src: String,
     title: String
   },
-
+  // 使用数据监听器
+  observers:{
+    'src':function(src){
+      console.log(src)
+      this._recoverStatus()
+      this._monitorSwitch()
+    }
+  },
   /**
    * 组件的初始数据
    */
@@ -27,9 +34,9 @@ Component({
   },
   // 在组件实例进入页面节点树时执行
 	attached: function() {
-		console.log("attached")
-		this._recoverStatus()
-		this._monitorSwitch()
+		// console.log("attached")
+		// this._recoverStatus()
+		// this._monitorSwitch()
   },
   // hidden不会触发detached，连续两个type都是music的话也不会触发
   detached: function(event) {
@@ -58,7 +65,7 @@ Component({
 
 		// 控制播放暂停按钮
     _recoverStatus: function() {
-			// console.log(mMgr, mMgr.paused)
+      // console.log('_recoverStatus')
 			if (mMgr.paused) {
         this.setData({
           playing: false
@@ -71,11 +78,16 @@ Component({
         this.setData({
           playing: true
         })
+      }else{
+        this.setData({
+          playing: false
+        })
       }
     },
 
 		// 总控开关控制音频播放
 		_monitorSwitch:function(){
+      console.log('_monitorSwitch')
 			mMgr.onPlay(()=>{
 				this._recoverStatus()
 			})
