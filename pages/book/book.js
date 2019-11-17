@@ -8,16 +8,20 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    books: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-		const hotList = bookModel.getHotList()
+    const hotList = bookModel.getHotList()
     hotList.then(
-      res => console.log(res)
+      res => {
+        this.setData({
+          books: res.data
+        })
+      }
     )
   },
 
