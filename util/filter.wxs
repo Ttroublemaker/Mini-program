@@ -1,0 +1,31 @@
+// const 是ES6语法，wxs不是js，不支持const*********
+// 控制text的\\n换行
+var format = function(text) {
+  if (!text) {
+    return
+  }
+  var reg = getRegExp('\\\\n', 'g')
+  // & nbsp;& nbsp;& nbsp;& nbsp;& nbsp;用于段落缩进
+  var text = text.replace(reg, '\n &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;')
+  return text
+}
+
+// 控制短评的显示数量
+var limit = function(array, length) {
+  return array.slice(0, length)
+}
+
+var highlight = function (index) {
+	if (index == 0) {
+		return 'ex-tag1'
+	}
+	if (index == 1) {
+		return 'ex-tag2'
+	}
+	return ''
+}
+module.exports = {
+  format: format,
+  limit: limit,
+	highlight: highlight
+}

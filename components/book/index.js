@@ -18,8 +18,11 @@ Component({
    * 组件的方法列表
    */
   methods: {
-		onclick(){
-			console.log(this.properties.data)
+		onTap(event){
+			const bookId = this.properties.book.id
+			wx.navigateTo({
+				url: `/pages/book-detail/book-detail?id=${bookId}`,
+			})
 		}
   }
 })

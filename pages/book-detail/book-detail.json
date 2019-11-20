@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+		"z-like": "/components/like/index",
+		"z-tag":"/components/tag/index"
+	}
+}
