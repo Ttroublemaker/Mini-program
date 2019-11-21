@@ -19,7 +19,6 @@ Component({
   // 使用数据监听器
   observers:{
     'src':function(src){
-      console.log(src)
       this._recoverStatus()
       this._monitorSwitch()
     }
@@ -87,7 +86,6 @@ Component({
 
 		// 总控开关控制音频播放
 		_monitorSwitch:function(){
-      console.log('_monitorSwitch')
 			mMgr.onPlay(()=>{
 				this._recoverStatus()
 			})

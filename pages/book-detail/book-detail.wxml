@@ -16,7 +16,7 @@
     <view class="comment-container">
       <block wx:for="{{util.limit(comments,10)}}" wx:key="">
         <!-- tag-class="ex-tag" 传递外部样式 -->
-        <z-tag class="tag" tag-class="{{util.highlight(index)}}" text="{{item.content}}">
+        <z-tag class="tag" tag-class="{{tool.highlight(index)}}" text="{{item.content}}">
           <!-- 插槽插入数量,注意在组件中用multipleSlots启用slot-->
           <text class="num" slot="after">{{"+" + item.nums}}</text>
         </z-tag>
@@ -74,7 +74,7 @@
   </view>
   <view class="comment-container">
     <block wx:for="{{util.limit(comments, 3)}}" wx:key="">
-      <z-tag bind:tapping="onPost" class="tag" tag-class="{{util.highlight(index)}}" text="{{item.content}}">
+      <z-tag bind:tapping="onPost" class="tag" tag-class="{{tool.highlight(index)}}" text="{{item.content}}">
         <text class="num" slot="after">{{'+' + item.nums}}</text>
       </z-tag>
     </block>
@@ -82,10 +82,9 @@
   <input focus="{{posting}}" confirm-type="发送" class="post" placeholder='短评最多12个字' bindconfirm="onPost"></input>
 </view>
 
-<!-- 第二种方式wxs
+<!-- 第二种方式wxs -->
 <wxs module="tool">
   var highlight = function(index) {
-    console.log(index)
     if (index == 0) {
       return 'ex-tag1'
     }
@@ -94,9 +93,7 @@
     }
     return ''
   }
-
-  }
   module.exports = {
     highlight: highlight
   }
-</wxs> -->
+</wxs>

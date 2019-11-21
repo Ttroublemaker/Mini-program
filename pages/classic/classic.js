@@ -1,5 +1,5 @@
-import ClassicModel from '../../models/classic.js'
-import LikeModel from '../../models/like.js'
+import ClassicModel from '../../models/classic-p.js'
+import LikeModel from '../../models/like-p.js'
 
 // 实例化
 let classicModel = new ClassicModel()
@@ -24,8 +24,7 @@ Page({
    */
   onLoad: function(options) {
     // 获取最新一期期刊
-    classicModel.getLatest((res) => {
-      // this._getLikeStatus(res.data.id,res.data.type)
+    classicModel.getLatest().then(res => {
       this.setData({
         classic: res.data,
         likeCount: res.data.fav_nums,
@@ -36,7 +35,6 @@ Page({
 
   onLike: function(event) {
     let behavior = event.detail.behavior //获取当前的点赞状态
-    // console.log(behavior)
     likeModel.like(behavior, this.data.classic.id, this.data.classic.type)
   },
 
@@ -49,7 +47,7 @@ Page({
   // 抽离的私有方法
   _updateClassic: function(nextOrPrevious) {
     let index = this.data.classic.index
-    classicModel.getClassic(index, nextOrPrevious, (res) => {
+    classicModel.getClassic(index, nextOrPrevious).then(res => {
       this._getLikeStatus(res.data.id, res.data.type)
       this.setData({
         classic: res.data,
@@ -60,8 +58,7 @@ Page({
   },
   // 获取动态更新的点赞状态和数量
   _getLikeStatus: function(artID, category) {
-    likeModel.getClassicLikeStatus(artID, category, (res) => {
-      // console.log(res)
+    likeModel.getClassicLikeStatus(artID, category).then(res => {
       this.setData({
         likeCount: res.data.fav_nums,
         likeStatus: res.data.like_status

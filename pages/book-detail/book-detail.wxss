@@ -193,7 +193,7 @@
 }
 
 .posting-container .comment-container {
-	width: 690px;
+	width: 690rpx;
   padding: 40rpx 30rpx 0 30rpx;
 }
 
