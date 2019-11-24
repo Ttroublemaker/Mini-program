@@ -12,7 +12,7 @@
   <!-- 短评 -->
   <view class="sub-container">
     <text class="headline">短评</text>
-    <!-- <text class="shadow" wx:if="{{noComment}}">还没有短评</text> -->
+    <text class="shadow" wx:if="{{!comments.length}}">还没有短评</text>
     <view class="comment-container">
       <block wx:for="{{util.limit(comments,10)}}" wx:key="">
         <!-- tag-class="ex-tag" 传递外部样式 -->
@@ -68,7 +68,7 @@
 
 <view wx:if="{{posting}}" class="posting-container">
   <view class="post-header">
-    <text wx:if="{{!(comments==false)}}">仅可点击标签+1</text>
+    <text wx:if="{{comments.length}}">仅可点击标签+1</text>
     <text wx:else>暂无短评</text>
     <text class="cancel" bind:tap="onCancel">取消</text>
   </view>
@@ -81,6 +81,9 @@
   </view>
   <input focus="{{posting}}" confirm-type="发送" class="post" placeholder='短评最多12个字' bindconfirm="onPost"></input>
 </view>
+
+<!-- 蒙层 -->
+<z-mask wx:if="{{posting}}"/>
 
 <!-- 第二种方式wxs -->
 <wxs module="tool">

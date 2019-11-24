@@ -8,6 +8,17 @@ class BookModel extends HTTP {
     })
   }
 
+  // 搜索书籍
+  search(start, q) {
+    return this.request({
+      url: 'book/search?summary=1',
+      data: {
+        q,
+        start
+      }
+    })
+  }
+
   // 获取书籍点赞情况
   getMyBookCount() {
     return this.request({
@@ -33,6 +44,17 @@ class BookModel extends HTTP {
   getComments(id) {
     return this.request({
       url: `book/${id}/short_comment`
+    })
+  }
+
+  postComment(bid, comment) {
+    return this.request({
+      url: 'book/add/short_comment',
+      method: 'POST',
+      data: {
+        book_id: bid,
+        content: comment
+      },
     })
   }
 }
