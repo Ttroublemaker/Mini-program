@@ -1,2 +1,8 @@
-<!--pages/my/my.wxml-->
-<text>pages/my/my.wxml</text>
+<view class="container">
+  <view class="title">喜欢</view>
+  <view class="books-container">
+    <block wx:for="{{3}}" wx:key="id">
+      <z-favor/>
+    </block>
+  </view>
+</view>

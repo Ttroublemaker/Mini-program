@@ -1,0 +1,15 @@
+<view class="container">
+  <view class="sub-title">
+    <text class="type">电影</text>
+    <z-like class="like" like="{{true}}" preventClick="{{true}}" count="{{231||likeCount}}" />
+  </view>
+  <view class="img">
+    <image src="./img/bgc.jpg"></image>
+  </view>
+  <view class="description">
+    <text>喜欢你陪我步入蝉夏，越过城市喧嚣喜欢你陪我步入蝉夏，越过城市喧嚣喜欢你陪我步入蝉夏，越过城市喧嚣喜欢你陪我步入蝉夏，越过城市喧嚣</text>
+  </view>
+  <view class="toDetail">
+    <text bind:tap="toDetail">详情</text>
+  </view>
+</view>

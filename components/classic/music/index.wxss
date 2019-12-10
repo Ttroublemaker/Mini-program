@@ -48,3 +48,9 @@
     -webkit-transform: rotate(360deg);
   }
 }
+
+/* CSS音乐播放 图标旋转 暂停保持角度，添加这个类 */
+.rotation-pause {
+    animation-play-state:paused;
+    -webkit-animation-play-state:paused; /* Safari 和 Chrome */
+}

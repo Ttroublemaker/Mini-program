@@ -1,5 +1,5 @@
 import BookModel from '../../models/book.js'
-import LikeModel from '../../models/like.js'
+import LikeModel from '../../models/like-p.js'
 
 const bookModel = new BookModel()
 let likeModel = new LikeModel()

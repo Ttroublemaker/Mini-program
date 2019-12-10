@@ -60,9 +60,6 @@
   </view>
   <view class="like-container">
     <z-like bind:like="onLike" class="like" like="{{like}}" count="{{count}}" />
-    <!-- <img-btn-cmp class="share-btn" open-type="share">
-      <image class="share" slot="img" src="/images/icon/share.png" />
-    </img-btn-cmp> -->
   </view>
 </view>
 
@@ -83,7 +80,7 @@
 </view>
 
 <!-- 蒙层 -->
-<z-mask wx:if="{{posting}}"/>
+<z-mask wx:if="{{posting}}" />
 
 <!-- 第二种方式wxs -->
 <wxs module="tool">

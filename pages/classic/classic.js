@@ -28,7 +28,7 @@ Page({
       this.setData({
         classic: res.data,
         likeCount: res.data.fav_nums,
-        likeStatus: res.data.like_status
+        likeStatus: res.data.like_status ? true : false
       })
     })
   },
@@ -61,8 +61,9 @@ Page({
     likeModel.getClassicLikeStatus(artID, category).then(res => {
       this.setData({
         likeCount: res.data.fav_nums,
-        likeStatus: res.data.like_status
+        likeStatus: res.data.like_status ? true : false
       })
+
     })
   },
   /**
