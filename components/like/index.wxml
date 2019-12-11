@@ -2,5 +2,20 @@
 <view bind:tap="onLike" class="container">
   <!-- <view catch:tap="onLike" class="container"> -->
   <image src="{{like?yesSrc:noSrc}}"></image>
-  <text>{{count}}</text>
+  <text>{{counts.countmodify(count)}}</text>
 </view>
+
+<!-- 处理数据过大时的显示问题 -->
+<wxs module="counts">
+  var countmodify = function(count) {
+    if (count > 1000) {
+      var num = parseInt(count / 1000)
+      return num + "k"
+    } else {
+      return count
+    }
+  }
+  module.exports = {
+    countmodify: countmodify
+  }
+</wxs>

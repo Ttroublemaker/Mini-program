@@ -1,15 +1,33 @@
 <view class="container">
   <view class="sub-title">
-    <text class="type">电影</text>
-    <z-like class="like" like="{{true}}" preventClick="{{true}}" count="{{231||likeCount}}" />
+    <text class="type">{{favor.favorType(text.type)}}</text>
+    <z-like class="like" like="{{true}}" preventClick="{{true}}" count="{{text.fav_nums}}" />
   </view>
   <view class="img">
-    <image src="./img/bgc.jpg"></image>
+    <image src="{{text.image}}"></image>
   </view>
   <view class="description">
-    <text>喜欢你陪我步入蝉夏，越过城市喧嚣喜欢你陪我步入蝉夏，越过城市喧嚣喜欢你陪我步入蝉夏，越过城市喧嚣喜欢你陪我步入蝉夏，越过城市喧嚣</text>
+    <text>{{text.content}}</text>
   </view>
   <view class="toDetail">
     <text bind:tap="toDetail">详情</text>
   </view>
 </view>
+
+<!-- 返回分类 -->
+<wxs module="favor">
+  var favorType = function(num) {
+    if (num == 300) {
+      return '电影'
+    }
+    if (num == 200) {
+      return '音乐'
+    }
+    if (num == 100) {
+      return '句子'
+    }
+  }
+  module.exports = {
+    favorType: favorType
+  }
+</wxs>

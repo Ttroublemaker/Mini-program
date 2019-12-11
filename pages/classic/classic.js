@@ -39,14 +39,16 @@ Page({
   },
 
   onNext: function(event) {
-    this._updateClassic('next')
+    let index = this.data.classic.index
+    this._updateClassic(index, 'next')
   },
   onPrevious: function(event) {
-    this._updateClassic('previous')
+    let index = this.data.classic.index
+    this._updateClassic(index, 'previous')
   },
   // 抽离的私有方法
-  _updateClassic: function(nextOrPrevious) {
-    let index = this.data.classic.index
+  _updateClassic: function(index, nextOrPrevious) {
+    // let index = this.data.classic.index
     classicModel.getClassic(index, nextOrPrevious).then(res => {
       this._getLikeStatus(res.data.id, res.data.type)
       this.setData({
@@ -66,6 +68,24 @@ Page({
 
     })
   },
+
+  // 页面跳转更新数据
+  updateBySwitch() {
+    wx.showLoading({
+      title: '加载中',
+    })
+    let ind = getApp().globalData.classicIndex
+    // console.log("跳转来的,根据ind获取相应的值", ind)
+    if (ind && ind !== 1) {
+      this._updateClassic(ind - 1, 'next')
+    } else if (ind == 1) {
+      this._updateClassic(2, 'previous')
+    }
+    getApp().globalData.classicIndex = ''
+    wx.hideLoading()
+
+  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -77,7 +97,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-
+    this.updateBySwitch()
   },
 
   /**

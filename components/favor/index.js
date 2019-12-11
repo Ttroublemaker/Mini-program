@@ -1,9 +1,13 @@
+const app = getApp()
 Component({
   /**
    * 组件的属性列表
    */
   properties: {
-
+    text: {
+      type: Object,
+      value: {}
+    }
   },
 
   /**
@@ -18,8 +22,12 @@ Component({
    */
   methods: {
     toDetail() {
-      console.log('去往详情页')
-      
+      let ind = this.properties.text.index
+      getApp().globalData.classicIndex = ind
+      wx.switchTab({
+        url: `/pages/classic/classic`,
+      })
+      // console.log('去往详情页', ind)
     }
   }
 })

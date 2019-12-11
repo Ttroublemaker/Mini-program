@@ -52,12 +52,12 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 2,
+			"current": 0,
 			"list": [
 				{
 					"id": 0,
-					"name": "pages/book/book",
-					"pathName": "pages/book/book",
+					"name": "pages/classic/classic",
+					"pathName": "pages/classic/classic",
 					"query": "id=18",
 					"scene": null
 				},

@@ -29,22 +29,6 @@ Page({
     const book = bookModel.getDetail(id)
     const comments = bookModel.getComments(id)
     const likeStatus = bookModel.getLikeStatus(id)
-    // book.then(res => {
-    //   this.setData({
-    //     book: res.data
-    //   })
-    // })
-    // comments.then(res => {
-    //   this.setData({
-    //     comments: res.data.comment
-    //   })
-    // })
-    // likeStatus.then(res => {
-    //   this.setData({
-    //     likeStatus: res.data.like_status,
-    //     likeCount: res.data.fav_nums,
-    //   })
-    // })
     // 三个数据加载完成后就隐藏加载组件 
     Promise.all([book, comments, likeStatus]).then(res => {
       this.setData({

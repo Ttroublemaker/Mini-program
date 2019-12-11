@@ -1,8 +1,9 @@
 <view class="container">
   <view class="title">喜欢</view>
   <view class="books-container">
-    <block wx:for="{{3}}" wx:key="id">
-      <z-favor/>
+    <block wx:for="{{favorList}}" wx:key="id">
+      <z-favor text="{{item}}">
+      </z-favor>
     </block>
   </view>
 </view>

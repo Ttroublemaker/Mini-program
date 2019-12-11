@@ -26,5 +26,9 @@ App({
    */
   onError: function(msg) {
 
+  },
+  globalData: {
+    classicIndex:''
   }
+
 })

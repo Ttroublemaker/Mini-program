@@ -23,8 +23,7 @@ class HTTP {
       method: method,
       data: data,
       header: {
-        'content-type': 'application/json',
-        'appkey': config.appkey
+        'content-type': 'application/json'
       },
       success: (res) => {
         const code = res.statusCode.toString() //注意转换成字符串
