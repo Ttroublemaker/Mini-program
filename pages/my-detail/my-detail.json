@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "z-like": "/components/like/index",
+    "z-movie": "/components/classic/movie/index",
+    "z-music": "/components/classic/music/index",
+    "z-essay": "/components/classic/essay/index",
+    "z-episode": "/components/episode/index",
+    "z-navi": "/components/navi/index"
+  }
+}

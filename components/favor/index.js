@@ -23,11 +23,10 @@ Component({
   methods: {
     toDetail() {
       let ind = this.properties.text.index
-      getApp().globalData.classicIndex = ind
-      wx.switchTab({
-        url: `/pages/classic/classic`,
+      wx.navigateTo({
+        url: `/pages/my-detail/my-detail?index=${ind}`,
       })
-      // console.log('去往详情页', ind)
+      console.log('去往详情页', ind)
     }
   }
 })

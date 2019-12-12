@@ -1,6 +1,5 @@
 import ClassicModel from '../../models/classic-p.js'
 import LikeModel from '../../models/like-p.js'
-
 // 实例化
 let classicModel = new ClassicModel()
 let likeModel = new LikeModel()
@@ -12,8 +11,6 @@ Page({
    */
   data: {
     classic: null,
-    latest: true,
-    first: false,
     // likeCount和likeStatus需要动态更新，不能缓存，所以提取出来
     likeCount: 0,
     likeStatus: false
@@ -23,14 +20,14 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    // 获取最新一期期刊
-    classicModel.getLatest().then(res => {
-      this.setData({
-        classic: res.data,
-        likeCount: res.data.fav_nums,
-        likeStatus: res.data.like_status ? true : false
-      })
+    wx.showLoading({
+      title: '加载中',
     })
+    // 获取期刊信息
+    const index = Number(options.index)
+    // console.log('传过来的', index)
+    this.getFavorBookDetail(index)
+    wx.hideLoading()
   },
 
   onLike: function(event) {
@@ -38,24 +35,27 @@ Page({
     likeModel.like(behavior, this.data.classic.id, this.data.classic.type)
   },
 
-  onNext: function(event) {
-    this._updateClassic('next')
+  //获取数据信息
+  getFavorBookDetail(ind) {
+    // console.log("跳转来的,根据ind获取相应的值", ind)
+    if (ind && ind !== 1) {
+      this._updateClassic(ind - 1, 'next')
+    } else if (ind == 1) {
+      this._updateClassic(2, 'previous')
+    }
   },
-  onPrevious: function(event) {
-    this._updateClassic('previous')
-  },
+
   // 抽离的私有方法
-  _updateClassic: function(nextOrPrevious) {
-    let index = this.data.classic.index
+  _updateClassic: function(index, nextOrPrevious) {
+    // let index = this.data.classic.index
     classicModel.getClassic(index, nextOrPrevious).then(res => {
       this._getLikeStatus(res.data.id, res.data.type)
       this.setData({
-        classic: res.data,
-        latest: classicModel.isLatest(res.data.index),
-        first: classicModel.isFirst(res.data.index)
+        classic: res.data
       })
     })
   },
+
   // 获取动态更新的点赞状态和数量
   _getLikeStatus: function(artID, category) {
     likeModel.getClassicLikeStatus(artID, category).then(res => {
@@ -78,7 +78,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-     
+
   },
 
   /**
