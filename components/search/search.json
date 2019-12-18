@@ -2,6 +2,7 @@
 	"component": true,
 	"usingComponents": {
 		"z-tag": "/components/tag/index",
-		"z-book": "/components/book/index"
+		"z-book": "/components/book/index",
+    "mp-loading": "/components/weui-miniprogram/loading/loading"
 	}
 }

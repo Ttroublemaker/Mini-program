@@ -24,6 +24,8 @@ Component({
     hotWords: [],
     dataArray: [],
     searching: false,
+    loading: false,
+    empty: false
   },
 
   attached: function() {
@@ -49,24 +51,35 @@ Component({
     },
     onDelete(event) {
       this.setData({
-        searching: false
+        searching: false,
+        q: '' //清空
       })
     },
 
     onConfirm: function(event) {
+      console.log(event)
       let q = event.detail.value || event.detail.text
       q = q.trim()
       this.setData({
-        searching: true
+        searching: true,
+        loading: true,
+        empty: false,
+        dataArray: []
       })
       bookModel.search(0, q).then(res => {
+        console.log(res.data.books)
         this.setData({
           dataArray: res.data.books,
-					// 为了使得点击tag组件时也能存储为历史搜索，结合input标签的value属性，动态改变绑定值
+          loading: false,
+          // 为了使得点击tag组件时也能存储为历史搜索，结合input标签的value属性，动态改变绑定值
           q
         })
+        if (this.data.dataArray.length == 0) {
+          this.setData({
+            empty: true
+          })
+        }
         keywordModel.addToHistory(q)
-
       })
 
     }

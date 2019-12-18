@@ -30,11 +30,11 @@ Page({
       searching: true
     })
   },
-	onCancel(){
-		this.setData({
-			searching: false
-		})
-	},
+  onCancel() {
+    this.setData({
+      searching: false
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

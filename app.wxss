@@ -1,5 +1,5 @@
 /* page页面级样式设置 */
-
+@import './components/weui-miniprogram/weui-wxss/dist/style/weui.wxss';
 page {
   font-family: "PingFangSC-Thin";
   font-size: 32rpx;

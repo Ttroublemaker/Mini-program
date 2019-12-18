@@ -11,8 +11,6 @@ Component({
    * 组件的属性列表
    */
   properties: {
-    // img: String,
-    // content: String
     src: String,
     title: String
   },
@@ -64,15 +62,12 @@ Component({
 
 		// 控制播放暂停按钮
     _recoverStatus: function() {
-      // console.log('_recoverStatus')
 			if (mMgr.paused) {
         this.setData({
           playing: false
         })
 				return 
       }
-			// console.log('1',mMgr.src)
-			// console.log('2', this.properties.src)
 			if (mMgr.src == this.properties.src) {
         this.setData({
           playing: true

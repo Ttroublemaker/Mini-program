@@ -1,13 +1,11 @@
-// 切记在小程序中import需要使用相对路径，不要使用绝对路径，使用组件时可以使用绝对路径
+// 切记:在小程序中import需要使用相对路径，不要使用绝对路径，使用组件时可以使用绝对路径
 import config from "../config.js"
 const tips = {
-  1: "抱歉，出错了",
-  1005: 'appKey无效',
+  1001: "抱歉，出错了",
   3000: '期刊不存在'
 }
-// 定义一个类
+// 定义一个HTTP类
 class HTTP {
-  // 利用结构
   request({
     url,
     data = {},
@@ -27,6 +25,7 @@ class HTTP {
       },
       success: (res) => {
         const code = res.statusCode.toString() //注意转换成字符串
+        console.log(res)
         if (code.startsWith('2')) {
           resolve(res.data)
         } else {
@@ -37,19 +36,19 @@ class HTTP {
       },
       fail: (err) => {
         reject()
-        this._show_error(1)
+        this._show_error(1001)
       }
     })
   }
   // 定义内部使用的私有方法
   _show_error(error_code) {
     if (!error_code) {
-      error_code = 1
+      error_code = 1001
     }
     const tip = tips[error_code]
 
     wx.showToast({
-      title: tip ? tips[error_code] : 1,
+      title: tip ? tips[error_code] : 1001,
       icon: 'none',
       duration: 2000
     })

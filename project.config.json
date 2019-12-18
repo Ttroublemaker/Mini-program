@@ -52,7 +52,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 3,
+			"current": 4,
 			"list": [
 				{
 					"id": 0,
@@ -80,6 +80,12 @@
 					"name": "pages/my-detail/my-detail",
 					"pathName": "pages/my-detail/my-detail",
 					"query": "id=18",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/book/book",
+					"pathName": "pages/book/book",
 					"scene": null
 				}
 			]

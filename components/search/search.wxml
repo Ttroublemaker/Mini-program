@@ -14,7 +14,7 @@
         <text>历史搜索</text>
       </view>
       <view class="tags">
-        <z-tag bind:tapping="onConfirm" wx:for="{{historyWords}}" :key="" text="{{item}}" />
+        <z-tag bind:tapping="onConfirm" class="z-tag" wx:for="{{historyWords}}" :key="" text="{{item}}" />
       </view>
     </view>
     <view class="history hot-search">
@@ -23,16 +23,17 @@
         <text>热门搜索</text>
       </view>
       <view class="tags">
-        <z-tag bind:tapping="onConfirm" wx:for="{{hotWords}}" :key="" text="{{item}}" />
+        <z-tag bind:tapping="onConfirm" class="z-tag" wx:for="{{hotWords}}" :key="" text="{{item}}" />
       </view>
     </view>
   </view>
-  <view class="books-container" wx:if="{{searching}}">
+  <view class="books-container" wx:if="{{searching&&!empty}}">
     <block wx:for="{{dataArray}}" wx:key="{{item.id}}">
       <z-book show-like="{{false}}" book="{{item}}" class="book" />
     </block>
   </view>
-  <!-- <loading-cmp class="loading" wx:if="{{loading}}" />
-  <loading-cmp class="loading-center" wx:if="{{loadingCenter}}" />
-  <text wx:if="{{empty}}" class="empty-tip">没有搜索到书籍</text> -->
+  <view class="loading-center">
+    <mp-loading type="circle" wx:if="{{loading}}" class="loading"></mp-loading>
+  </view>
+  <text wx:if="{{empty}}" class="empty-tip">没有搜索到书籍</text>
 </view>
